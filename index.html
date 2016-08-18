@@ -9,6 +9,8 @@
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
          <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
          <link rel="stylesheet" href="styles/leaflet-sidebar.css" />
+         <link rel="stylesheet" href="styles/L.Control.Locate.min.css" />
+
     </head>
     <body>
         <div id="map">
@@ -33,15 +35,57 @@
                     <p>
                     Helfen Sie mit, den unagenehmen Geruch zu orten!
                     </p>
-                    <p class="has-text-centered">
-                        <a class="button is-primary">Melden</a>
-                    </p>
+                    <!--Form-->
+                    <form>
+                        <label class="label">Gemeldet von</label>
+                        <p class="control">
+                        <input class="input" type="text" placeholder="Max Mustermann">
+                        </p>
+
+                        <label class="label">Ort</label>
+                        <p class="control">
+                        <span id="coordinates">...</span>
+                        </p>
+
+                        <label class="label">Zeit</label>
+                        <p class="control">
+                        <span id="time"></span>
+                        </p>
+
+                        <label class="label">Stock</label>
+                        <p class="control">
+                        <span class="select">
+                            <select>
+                                <option>EG</option>
+                                <option>1.</option>
+                                <option>2.</option>
+                                <option>3.</option>
+                                <option>4.</option>
+                                <option>5.</option>
+                                <option>6.</option>
+                                <option>7.</option>
+                                <option>8.</option>
+                            </select>
+                        </span>
+                        </p>
+
+                        <label class="label">Message</label>
+                        <p class="control">
+                        <textarea class="textarea" placeholder="Beschreiben Sie den Geruch, versuchen Sie dabei sachlich zu bleiben..."></textarea>
+                        </p>
+                        <!--Submit button-->
+                        <p class="has-text-centered">
+                        <a id="btn-report" class="button is-primary is-large">Melden</a>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
          <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
          <script src="js/leaflet-sidebar.js"></script>
+         <script src="js/L.Control.Locate.min.js"></script>
+         <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
          <script type="text/javascript" src="public/bundle.js" charset="utf-8"></script>
     </body>
 </html>

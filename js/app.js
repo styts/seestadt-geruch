@@ -14,6 +14,9 @@ sidebar.open('home');
 
 var lc = L.control.locate({
   //drawCircle: false
+  locateOptions: {
+       maxZoom: 18
+}
 }).addTo(map);
 lc.start();
 

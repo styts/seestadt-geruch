@@ -1,7 +1,14 @@
 module.exports = {
+  entry: "./js/app.js",
+  output: {
+    filename: "public/bundle.js"
+  },
   module: {
     loaders: [
-      { test: /\.css$/, loader: "style-loader!css-loader" },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+      }
     ]
   }
 };

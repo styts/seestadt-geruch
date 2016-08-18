@@ -25,8 +25,20 @@ $('#btn-report').click(function () {
 function timeout() {
     setTimeout(function () {
         $('#time').html(moment().locale('de').format('MMMM Do YYYY, h:mm:ss a'));
+        if (lc._marker) {
+            $.each(map._layers, function (ml) {
+              var o =map._layers[ml];
+              if (o._radius && o._radius == 5) {
+                set_latlng(o._latlng);
+              }
+          })
+        }
 
         timeout();
     }, 1000);
 }
 timeout();
+
+function set_latlng(latlng) {
+  $('#coordinates').html("(" + latlng.lat +  ", " + latlng.lng + ")");
+}

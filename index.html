@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Seestadt Geruch</title>
+
+
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+         <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+         <link rel="stylesheet" href="styles/leaflet-sidebar.css" />
+         <style type="text/css" media="screen">
+			body {
+				padding: 0;
+				margin: 0;
+			}
+            html, body, #map {
+				height: 100%;
+				font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+            }
+         </style>
+    </head>
+    <body>
+        <div id="map">
+            &nbsp;
+        </div>
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-bars" /></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">
+                    Seestadt Geruch
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+				<p>
+				Helfen Sie mit, den unagenehmen Geruch zu orten!
+				</p>
+            </div>
+        </div>
+    </div>
+         <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+         <script src="js/leaflet-sidebar.js"></script>
+         <script type="text/javascript" charset="utf-8">
+var map = L.map('map').setView([48.226016394414145, 16.50457620620728], 16);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+maxZoom: 20,
+id: 'mapbox.streets',
+accessToken: 'pk.eyJ1Ijoic3R5dHMiLCJhIjoiY2lzMGkzbHpmMDA1ajJzbzcxYXNvM2VidiJ9.ozNnfh0l7gHgBxrbovRcAw'
+}).addTo(map);
+
+var sidebar = L.control.sidebar('sidebar').addTo(map);
+         </script>
+    </body>
+</html>

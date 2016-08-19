@@ -21,4 +21,15 @@ i.fa {
     display: none;
 }
 
+.foot {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  background-color: white;
+  color: grey;
+}
+
 @import '~bulma';

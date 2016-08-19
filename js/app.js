@@ -25,7 +25,6 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 sidebar.open('home');
 
 var lc = L.control.locate({
-  //drawCircle: false
   locateOptions: {
        maxZoom: 18
 }
@@ -37,7 +36,6 @@ $('#btn-report').click(function (event) {
   target.addClass('is-loading');
   $('.notification').hide();
   var form = $('#reportform');
-  console.log( $( form ).serialize() );
   $.ajax({
     url: API_URL,
     data: form.serialize(),

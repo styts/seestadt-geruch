@@ -1,12 +1,18 @@
 var css = require('../styles/main.scss');
 var moment = require('moment');
 
-map = L.map('map', {minZoom: 15}).setView([48.226016394414145, 16.50457620620728], 16);
+var southWest = L.latLng(40.712, -74.227),
+    northEast = L.latLng(40.774, -74.125),
+    bounds = L.latLngBounds(southWest, northEast);
+
+var maxBounds = {"_southWest":{"lat":48.22404007661269,"lng":16.494458913803104},"_northEast":{"lat":48.225855575745435,"lng":16.503369212150577}};
+var center = [48.226016394414145, 16.50457620620728];
+map = L.map('map', {minZoom: 15, maxBounds : maxBounds }).setView(center, 16);
 
 if (__DEV__) {
   API_URL = "http://localhost:8000/api/v1/report/";
 } else {
-  API_URL = "/api/report";
+  API_URL = "/api/v1/report/";
 }
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -64,5 +70,6 @@ function set_latlng(latlng) {
 }
 
 module.exports = {
-  map: map
+  map: map,
+  L: L
 };

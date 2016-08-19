@@ -36,46 +36,49 @@
                     Helfen Sie mit, den unagenehmen Geruch zu orten!
                     </p>
                     <!--Form-->
-                    <form>
+                    <form id='reportform' action="/" method="POST">
                         <label class="label">Gemeldet von</label>
                         <p class="control">
-                        <input class="input" type="text" placeholder="Max Mustermann">
+                        <input name="name" class="input" type="text" placeholder="Max Mustermann">
                         </p>
 
                         <label class="label">Ort</label>
                         <p class="control">
                         <span id="coordinates"><img width="20" alt="wird bestimmt..." src="styles/ring.gif"></span>
+                        <input type="hidden" name="latitude" id="latitude" value="" />
+                        <input type="hidden" name="longitude" id="longitude" value="" />
                         </p>
 
                         <label class="label">Zeit</label>
                         <p class="control">
                         <span id="time"></span>
+                        <input type="hidden" name="time_user" id="time_user" value="" />
                         </p>
 
                         <label class="label">Stock</label>
                         <p class="control">
                         <span class="select">
-                            <select>
-                                <option>EG</option>
-                                <option>1.</option>
-                                <option>2.</option>
-                                <option>3.</option>
-                                <option>4.</option>
-                                <option>5.</option>
-                                <option>6.</option>
-                                <option>7.</option>
-                                <option>8.</option>
+                            <select name="floor">
+                                <option value="0">EG</option>
+                                <option value="1">1.</option>
+                                <option value="2">2.</option>
+                                <option value="3">3.</option>
+                                <option value="4">4.</option>
+                                <option value="5">5.</option>
+                                <option value="6">6.</option>
+                                <option value="7">7.</option>
+                                <option value="8">8.</option>
                             </select>
                         </span>
                         </p>
 
                         <label class="label">Riecht nach</label>
                         <p class="control">
-                        <textarea class="textarea" placeholder="Beschreiben Sie den Geruch, versuchen Sie dabei sachlich zu bleiben..."></textarea>
+                        <textarea class="textarea" name="message" placeholder="Beschreiben Sie den Geruch, versuchen Sie dabei sachlich zu bleiben..."></textarea>
                         </p>
                         <!--Submit button-->
                         <p class="has-text-centered">
-                        <a id="btn-report" class="button is-primary is-large">Melden</a>
+                        <a id="btn-report" class="button is-primary is-large is-disabled">Melden</a>
                         </p>
                         
                         <div id="notify-success" class="notification">

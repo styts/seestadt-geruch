@@ -5,14 +5,14 @@ var southWest = L.latLng(40.712, -74.227),
     northEast = L.latLng(40.774, -74.125),
     bounds = L.latLngBounds(southWest, northEast);
 
-var maxBounds = {"_southWest":{"lat":48.22404007661269,"lng":16.494458913803104},"_northEast":{"lat":48.225855575745435,"lng":16.503369212150577}};
+var maxBounds = {'_southWest':{'lat':48.22404007661269,'lng':16.494458913803104},'_northEast':{'lat':48.225855575745435,'lng':16.503369212150577}};
 var center = [48.226016394414145, 16.50457620620728];
 map = L.map('map', {minZoom: 15, maxBounds : maxBounds }).setView(center, 16);
 
 if (__DEV__) {
-  API_URL = "http://localhost:8000/api/v1/report/";
+  API_URL = 'http://localhost:8000/api/v1/report/';
 } else {
-  API_URL = "/api/v1/report/";
+  API_URL = '/api/v1/report/';
 }
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -33,13 +33,14 @@ var lc = L.control.locate({
 lc.start();
 
 $('#btn-report').click(function (event) {
-  console.log(arguments);
   var target = $(event.target);
   target.addClass('is-loading');
   $('.notification').hide();
+  var form = $('#reportform');
+  console.log( $( form ).serialize() );
   $.ajax({
     url: API_URL,
-    data: {foo: "bar"},
+    data: form.serialize(),
     type: 'POST',
     success: function(data) { $('#notify-success').show(); },
     error: function() { $('#notify-failiure').show(); },
@@ -47,10 +48,16 @@ $('#btn-report').click(function (event) {
   });
 });
 
+$('#reportform').submit(function (ev) {
+  $('#btn-report').click();
+  ev.preventDefault();
+});
+
 // update time
 function timeout() {
     setTimeout(function () {
         $('#time').html(moment().locale('de').format('MMMM Do YYYY, h:mm:ss a'));
+        $('#time_user').val(moment().format('X'));
         if (lc._marker) {
             $.each(map._layers, function (ml) {
               var o =map._layers[ml];
@@ -66,7 +73,10 @@ function timeout() {
 timeout();
 
 function set_latlng(latlng) {
-  $('#coordinates').html("(" + latlng.lat +  ", " + latlng.lng + ")");
+  $('#coordinates').html('(' + latlng.lat +  ', ' + latlng.lng + ')');
+  $('#latitude').val(latlng.lat);
+  $('#longitude').val(latlng.lng);
+  $('#btn-report').removeClass('is-disabled');
 }
 
 module.exports = {

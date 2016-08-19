@@ -1,7 +1,13 @@
 var css = require('../styles/main.scss');
 var moment = require('moment');
 
-var map = L.map('map').setView([48.226016394414145, 16.50457620620728], 16);
+map = L.map('map', {minZoom: 15}).setView([48.226016394414145, 16.50457620620728], 16);
+
+if (__DEV__) {
+  API_URL = "http://localhost:8000/api/v1/report/";
+} else {
+  API_URL = "/api/report";
+}
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 maxZoom: 20,
@@ -20,8 +26,19 @@ var lc = L.control.locate({
 }).addTo(map);
 lc.start();
 
-$('#btn-report').click(function () {
+$('#btn-report').click(function (event) {
   console.log(arguments);
+  var target = $(event.target);
+  target.addClass('is-loading');
+  $('.notification').hide();
+  $.ajax({
+    url: API_URL,
+    data: {foo: "bar"},
+    type: 'POST',
+    success: function(data) { $('#notify-success').show(); },
+    error: function() { $('#notify-failiure').show(); },
+    complete: function () { target.removeClass('is-loading'); }
+  });
 });
 
 // update time
@@ -34,7 +51,7 @@ function timeout() {
               if (o._radius && o._radius == 5) {
                 set_latlng(o._latlng);
               }
-          })
+          });
         }
 
         timeout();
@@ -45,3 +62,7 @@ timeout();
 function set_latlng(latlng) {
   $('#coordinates').html("(" + latlng.lat +  ", " + latlng.lng + ")");
 }
+
+module.exports = {
+  map: map
+};

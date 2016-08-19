@@ -44,7 +44,7 @@
 
                         <label class="label">Ort</label>
                         <p class="control">
-                        <span id="coordinates"><img width="20px" src="styles/ring.svg"></span>
+                        <span id="coordinates"><img width="20" alt="wird bestimmt..." src="styles/ring.gif"></span>
                         </p>
 
                         <label class="label">Zeit</label>
@@ -77,9 +77,15 @@
                         <p class="has-text-centered">
                         <a id="btn-report" class="button is-primary is-large">Melden</a>
                         </p>
+                        
+                        <div id="notify-success" class="notification">
+  Ihre Meldung würde gespeichert.
+                        </div>
+                        <div id="notify-failiure" class="notification is-danger">
+  Ihre Meldung könnte derzeit leider nicht gespeichert werden.
+                        </div>
+
                     </form>
-                    <p>
-                    </p>
                     <p>
                     Die Meldungen werden in den nächsten Tagen auf die Karte zu sehen.
                     </p>
@@ -90,7 +96,8 @@
          <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
          <script src="js/leaflet-sidebar.js"></script>
          <script src="js/L.Control.Locate.min.js"></script>
-         <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+         <!--<script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>-->
+         <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
          <script type="text/javascript" src="public/bundle.js" charset="utf-8"></script>
     </body>
 </html>

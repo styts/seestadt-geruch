@@ -1,8 +1,0 @@
-from django.contrib import admin
-from .models import Report
-
-
-class ReportAdmin(admin.ModelAdmin):
-    list_display = ('time_added', 'name', 'floor', 'message')
-
-admin.site.register(Report, ReportAdmin)

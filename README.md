@@ -7,3 +7,5 @@
 * [ ] client: display dots (entries from api) on map
 * [ ] client: calendar widget
 * [ ] client: add map bounds
+* [ ] client: ensure package.json has all the needed  packeages listed
+* [ ] client: add README for other developers

@@ -12,7 +12,7 @@ map = L.map('map', {minZoom: 15, maxBounds : maxBounds }).setView(center, 16);
 if (__DEV__) {
   API_URL = 'http://localhost:8000/api/v1/report/';
 } else {
-  API_URL = '/api/v1/report/';
+  API_URL = '/smell/api/';
 }
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {

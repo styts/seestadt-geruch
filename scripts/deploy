@@ -1,3 +1,5 @@
+./scripts/publish
+
 ssh wf -t -t <<ENDOFSCRIPT
 
 cd webapps/seestadt/seestadt-geruch

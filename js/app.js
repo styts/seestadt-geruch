@@ -97,7 +97,8 @@ function timeout() {
 timeout();
 
 function set_latlng(latlng) {
-  $('#coordinates').html('(' + latlng.lat +  ', ' + latlng.lng + ')');
+  // only show the last 6 decimal points in coordinates (the server will save with this precision)
+  $('#coordinates').html('(' + latlng.lat.toString().substring(0, 9) +  ', ' + latlng.lng.toString().substring(0, 9) + ')');
   $('#latitude').val(latlng.lat);
   $('#longitude').val(latlng.lng);
   $('#btn-report').removeClass('is-disabled');

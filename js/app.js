@@ -60,6 +60,9 @@ $('#btn-report').click(function (event) {
   var form = $('#reportform');
   $.ajax({
     url: API_URL,
+    xhrFields: {
+      withCredentials: true
+    },
     data: form.serialize(),
     type: 'POST',
     success: function() {

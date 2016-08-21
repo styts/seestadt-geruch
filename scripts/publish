@@ -2,5 +2,5 @@ git checkout gh-pages
 git merge master
 webpack -p
 git commit public -m 'public build'
-git checkout master 
 git push
+git checkout master 

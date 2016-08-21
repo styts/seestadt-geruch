@@ -2,15 +2,12 @@
 <html>
     <head>
         <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <title>Seestadt Geruch</title>
-
-
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-         <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-         <link rel="stylesheet" href="styles/leaflet-sidebar.css" />
-         <link rel="stylesheet" href="styles/L.Control.Locate.min.css" />
-
+        <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+        <link rel="stylesheet" href="styles/leaflet-sidebar.css" />
+        <link rel="stylesheet" href="styles/L.Control.Locate.min.css" />
     </head>
     <body>
         <div id="map">
@@ -20,7 +17,7 @@
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
-                <li><a href="#home" role="tab"><i class="fa fa-bars" /></i></a></li>
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
             </ul>
         </div>
 
@@ -36,48 +33,65 @@
                     Helfen Sie mit, den unagenehmen Geruch zu orten!
                     </p>
                     <!--Form-->
-                    <form>
+                    <form id='reportform' action="/" method="POST">
                         <label class="label">Gemeldet von</label>
                         <p class="control">
-                        <input class="input" type="text" placeholder="Max Mustermann">
+                        <input name="name" class="input" type="text" placeholder="Max Mustermann">
                         </p>
 
                         <label class="label">Ort</label>
                         <p class="control">
-                        <span id="coordinates">...</span>
+                        <span id="coordinates"><img width="20" alt="wird bestimmt..." src="styles/ring.gif"></span>
+                        <input type="hidden" name="latitude" id="latitude" value="" />
+                        <input type="hidden" name="longitude" id="longitude" value="" />
                         </p>
 
                         <label class="label">Zeit</label>
                         <p class="control">
                         <span id="time"></span>
+                        <input type="hidden" name="time_user" id="time_user" value="" />
                         </p>
 
                         <label class="label">Stock</label>
                         <p class="control">
                         <span class="select">
-                            <select>
-                                <option>EG</option>
-                                <option>1.</option>
-                                <option>2.</option>
-                                <option>3.</option>
-                                <option>4.</option>
-                                <option>5.</option>
-                                <option>6.</option>
-                                <option>7.</option>
-                                <option>8.</option>
+                            <select name="floor">
+                                <option value="0">EG</option>
+                                <option value="1">1.</option>
+                                <option value="2">2.</option>
+                                <option value="3">3.</option>
+                                <option value="4">4.</option>
+                                <option value="5">5.</option>
+                                <option value="6">6.</option>
+                                <option value="7">7.</option>
+                                <option value="8">8.</option>
                             </select>
                         </span>
                         </p>
 
-                        <label class="label">Message</label>
+                        <label class="label">Riecht nach</label>
                         <p class="control">
-                        <textarea class="textarea" placeholder="Beschreiben Sie den Geruch, versuchen Sie dabei sachlich zu bleiben..."></textarea>
+                        <textarea class="textarea" name="message" placeholder="Beschreiben Sie den Geruch, versuchen Sie dabei sachlich zu bleiben..."></textarea>
                         </p>
                         <!--Submit button-->
                         <p class="has-text-centered">
-                        <a id="btn-report" class="button is-primary is-large">Melden</a>
+                        <a id="btn-report" class="button is-primary is-large is-disabled">Melden</a>
                         </p>
+                        
+                        <div id="notify-success" class="notification">
+  Ihre Meldung würde gespeichert.
+                        </div>
+                        <div id="notify-failiure" class="notification is-danger">
+  Ihre Meldung könnte derzeit leider nicht gespeichert werden.
+                        </div>
+
                     </form>
+                    <p>
+                    Die Meldungen werden in den nächsten Tagen auf der Karte zu sehen.
+                    </p>
+                    <div class="foot">
+                        web entwicklung von <a href="http://ksware.com">ksware.com</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,7 +99,7 @@
          <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
          <script src="js/leaflet-sidebar.js"></script>
          <script src="js/L.Control.Locate.min.js"></script>
-         <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+         <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
          <script type="text/javascript" src="public/bundle.js" charset="utf-8"></script>
     </body>
 </html>

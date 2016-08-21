@@ -1,0 +1,8 @@
+ssh wf -t -t <<ENDOFSCRIPT
+
+cd webapps/seestadt/seestadt-geruch
+git pull
+
+exit
+
+ENDOFSCRIPT

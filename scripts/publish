@@ -2,3 +2,4 @@ git checkout gh-pages
 webpack -p
 git commit public -m 'public build'
 git checkout master 
+git push

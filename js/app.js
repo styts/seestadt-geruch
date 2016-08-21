@@ -43,6 +43,12 @@ function form_valid() {
   return true;
 }
 
+function hideAfter(el, time) {
+  setTimeout(function(){
+    el.hide();
+  }, time);
+}
+
 $('#btn-report').click(function (event) {
   var target = $(event.target);
   if (!form_valid()) {
@@ -56,7 +62,11 @@ $('#btn-report').click(function (event) {
     url: API_URL,
     data: form.serialize(),
     type: 'POST',
-    success: function(data) { $('#notify-success').show(); },
+    success: function() {
+      $('#notify-success').show();
+      $('#message').val('');
+      hideAfter($('#notify-success'), 5000);
+    },
     error: function() { $('#notify-failiure').show(); },
     complete: function () { target.removeClass('is-loading'); }
   });

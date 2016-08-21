@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "./scripts/deploy",
-    "dev": "webpack-dev-server --progress --colors --host 0.0.0.0",
+    "dev": "BUILD_DEV=1 webpack-dev-server --progress --colors --host 0.0.0.0",
     "publish": "./scripts/publish"
   },
   "author": "",

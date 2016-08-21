@@ -10,7 +10,7 @@ var center = [48.226016394414145, 16.50457620620728];
 map = L.map('map', {minZoom: 15, maxBounds : maxBounds }).setView(center, 16);
 
 if (__DEV__) {
-  API_URL = 'http://localhost:8000/api/v1/report/';
+  API_URL = 'http://localhost:8000/smell/api/';
 } else {
   API_URL = '/smell/api/';
 }
@@ -31,10 +31,26 @@ var lc = L.control.locate({
 }).addTo(map);
 lc.start();
 
+function form_valid() {
+  var msg = $('#message').val();
+  if (!msg) {
+    $('#message').addClass('is-danger');
+    return false;
+  } else{
+    $('#message').removeClass('is-danger');
+  }
+
+  return true;
+}
+
 $('#btn-report').click(function (event) {
   var target = $(event.target);
+  if (!form_valid()) {
+    return;
+  }
   target.addClass('is-loading');
   $('.notification').hide();
+  // form validation
   var form = $('#reportform');
   $.ajax({
     url: API_URL,

@@ -10,7 +10,7 @@ var center = [48.226016394414145, 16.50457620620728];
 map = L.map('map', {minZoom: 15, maxBounds : maxBounds }).setView(center, 16);
 
 if (__DEV__) {
-  API_URL = 'http://localhost:8000/api/v1/report/';
+  API_URL = 'http://localhost:8000/smell/api/';
 } else {
   API_URL = '/smell/api/';
 }
@@ -31,16 +31,42 @@ var lc = L.control.locate({
 }).addTo(map);
 lc.start();
 
+function form_valid() {
+  var msg = $('#message').val();
+  if (!msg) {
+    $('#message').addClass('is-danger');
+    return false;
+  } else{
+    $('#message').removeClass('is-danger');
+  }
+
+  return true;
+}
+
+function hideAfter(el, time) {
+  setTimeout(function(){
+    el.hide();
+  }, time);
+}
+
 $('#btn-report').click(function (event) {
   var target = $(event.target);
+  if (!form_valid()) {
+    return;
+  }
   target.addClass('is-loading');
   $('.notification').hide();
+  // form validation
   var form = $('#reportform');
   $.ajax({
     url: API_URL,
     data: form.serialize(),
     type: 'POST',
-    success: function(data) { $('#notify-success').show(); },
+    success: function() {
+      $('#notify-success').show();
+      $('#message').val('');
+      hideAfter($('#notify-success'), 5000);
+    },
     error: function() { $('#notify-failiure').show(); },
     complete: function () { target.removeClass('is-loading'); }
   });
@@ -71,7 +97,8 @@ function timeout() {
 timeout();
 
 function set_latlng(latlng) {
-  $('#coordinates').html('(' + latlng.lat +  ', ' + latlng.lng + ')');
+  // only show the last 6 decimal points in coordinates (the server will save with this precision)
+  $('#coordinates').html('(' + latlng.lat.toString().substring(0, 9) +  ', ' + latlng.lng.toString().substring(0, 9) + ')');
   $('#latitude').val(latlng.lat);
   $('#longitude').val(latlng.lng);
   $('#btn-report').removeClass('is-disabled');

@@ -1,5 +1,6 @@
 var css = require('../styles/main.scss');
 var moment = require('moment');
+var markers = require('./markers');
 
 var southWest = L.latLng(40.712, -74.227),
     northEast = L.latLng(40.774, -74.125),
@@ -14,6 +15,8 @@ if (__DEV__) {
 } else {
   API_URL = '/smell/api/';
 }
+
+markers.init();
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 maxZoom: 20,

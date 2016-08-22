@@ -68,9 +68,10 @@ $('#btn-report').click(function (event) {
     },
     data: form.serialize(),
     type: 'POST',
-    success: function() {
+    success: function(data) {
       $('#notify-success').show();
       $('#message').val('');
+      markers.add_marker(data.object);
       hideAfter($('#notify-success'), 5000);
     },
     error: function() { $('#notify-failiure').show(); },
@@ -86,7 +87,7 @@ $('#reportform').submit(function (ev) {
 // update time
 function timeout() {
     setTimeout(function () {
-        $('#time').html(moment().locale('de').format('MMMM Do YYYY, h:mm:ss a'));
+        $('#time').html(moment().locale('de').format('Do MMMM YYYY, HH:mm:ss'));
         $('#time_user').val(moment().format('X'));
         if (lc._marker) {
             $.each(map._layers, function (ml) {

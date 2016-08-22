@@ -18,20 +18,18 @@
         <div class="sidebar-tabs">
             <ul role="tablist">
                 <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#report" role="tab"><i class="fa fa-pencil-square-o"></i></a></li>
             </ul>
         </div>
 
         <!-- Tab panes -->
         <div class="sidebar-content">
-            <div class="sidebar-pane" id="home">
+            <div class="sidebar-pane" id="report">
                 <h1 class="sidebar-header">
-                    Seestadt Geruch
+                    Geruch Melden
                     <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                 </h1>
                 <div class="content">
-                    <p>
-                    Helfen Sie mit, den unagenehmen Geruch zu orten!
-                    </p>
                     <!--Form-->
                     <form id='reportform' action="/" method="POST">
                         <label class="label">Gemeldet von</label>
@@ -86,9 +84,20 @@
                         </div>
 
                     </form>
-                    <div class="foot">
-                        web entwicklung von <a href="http://ksware.com">ksware.com</a>
-                    </div>
+                </div>
+            </div>
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">
+                    Seestadt Geruch
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+                <div class="content">
+                    <p>
+                    Helfen Sie mit, den unagenehmen Geruch zu orten!
+                    </p>
+                    <p class="has-text-centered">
+                        <a href="#" class="sidebar-link-report button is-primary is-large">Melden</a>
+                    </p>
                 </div>
             </div>
         </div>

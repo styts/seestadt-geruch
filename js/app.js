@@ -27,6 +27,12 @@ accessToken: 'pk.eyJ1Ijoic3R5dHMiLCJhIjoiY2lzMGkzbHpmMDA1ajJzbzcxYXNvM2VidiJ9.oz
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 sidebar.open('home');
 
+$(document).ready(function() {
+  $('.sidebar-link-report').click(function(el){
+    sidebar.open('report');
+  });
+});
+
 var lc = L.control.locate({
   locateOptions: {
        maxZoom: 18

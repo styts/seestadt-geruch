@@ -12,7 +12,11 @@ function init() {
 function html_marker(marker) {
   marker.time_ago = moment(marker.time_added).locale('de').fromNow();
   marker.time = moment(marker.time_added).locale('de').format('Do MMMM YYYY, HH:mm');
-  return format('<div class="popup"><p>{message}</p><p>{time} (<i>{time_ago}</i>)</p></div>', marker);
+  result = format('<p>{message}</p><p>{time_ago} (<i>{time}</i>)</p>', marker);
+  if (marker.name) {
+    result += format('<p>von <i>{name}</i></p>', marker);
+  }
+  return result;
 }
 
 function add_marker(marker){

@@ -1,6 +1,15 @@
 var format = require("string-template");
 var moment = require("moment");
 
+var greenIcon = L.icon({
+  iconUrl: 'img/marker-icon.png',
+  iconRetinaUrl: 'img/marker-icon-2x.png',
+  iconSize:    [25, 41],
+  iconAnchor:  [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize:  [41, 41]
+});
 
 function init() {
   setTimeout(function(){
@@ -21,7 +30,7 @@ function html_marker(marker) {
 
 function add_marker(marker){
   coords = L.latLng(parseFloat(marker.latitude), parseFloat(marker.longitude));
-  mrk = new L.marker(coords)
+  mrk = new L.marker(coords, {icon: greenIcon})
     .bindPopup(html_marker(marker))
     .addTo(map);
 }

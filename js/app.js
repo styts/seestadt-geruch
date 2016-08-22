@@ -1,5 +1,6 @@
 var css = require('../styles/main.scss');
 var moment = require('moment');
+var markers = require('./markers');
 
 var southWest = L.latLng(40.712, -74.227),
     northEast = L.latLng(40.774, -74.125),
@@ -14,6 +15,8 @@ if (__DEV__) {
 } else {
   API_URL = '/smell/api/';
 }
+
+markers.init();
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 maxZoom: 20,
@@ -65,9 +68,10 @@ $('#btn-report').click(function (event) {
     },
     data: form.serialize(),
     type: 'POST',
-    success: function() {
+    success: function(data) {
       $('#notify-success').show();
       $('#message').val('');
+      markers.add_marker(data.object);
       hideAfter($('#notify-success'), 5000);
     },
     error: function() { $('#notify-failiure').show(); },
@@ -83,7 +87,7 @@ $('#reportform').submit(function (ev) {
 // update time
 function timeout() {
     setTimeout(function () {
-        $('#time').html(moment().locale('de').format('MMMM Do YYYY, h:mm:ss a'));
+        $('#time').html(moment().locale('de').format('Do MMMM YYYY, HH:mm:ss'));
         $('#time_user').val(moment().format('X'));
         if (lc._marker) {
             $.each(map._layers, function (ml) {

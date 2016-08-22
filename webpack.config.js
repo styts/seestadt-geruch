@@ -17,5 +17,9 @@ module.exports = {
       }
     ]
   },
-  plugins: [definePlugin],
+  plugins: [
+    definePlugin,
+    new webpack.ContextReplacementPlugin(
+      /moment[\\\/]locale$/, /^\.\/(en|de)$/)
+],
 };

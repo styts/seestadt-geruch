@@ -30,6 +30,8 @@ i.fa {
   text-align: center;
   background-color: white;
   color: grey;
+
+  display: none; // currently disabled, takes too much space
 }
 
 @import '~bulma';

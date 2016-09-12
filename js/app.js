@@ -8,7 +8,7 @@ var southWest = L.latLng(40.712, -74.227),
 
 var maxBounds = {'_southWest':{'lat':48.22404007661269,'lng':16.494458913803104},'_northEast':{'lat':48.225855575745435,'lng':16.503369212150577}};
 var center = [48.226016394414145, 16.50457620620728];
-map = L.map('map', {minZoom: 16, maxBounds : maxBounds }).setView(center, 16);
+map = L.map('map', {minZoom: 14, maxBounds : maxBounds }).setView(center, 16);
 
 if (__DEV__) {
   API_URL = 'http://localhost:8000/smell/api/';
